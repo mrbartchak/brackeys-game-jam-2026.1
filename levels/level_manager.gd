@@ -12,6 +12,7 @@ var block_types: Dictionary = {
 
 @onready var target_zone_container: Node2D = $TargetZones
 @onready var block_container: Node2D = $Blocks
+@onready var level_label: Label = %LevelLabel
 @onready var win_screen: Control = %WinScreen
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _ready() -> void:
 	if level_data:
 		_build_level()
 	GameManager.unlock_input()
+	level_label.text = level_data.display_name
 
 func _build_level() -> void:
 	_spawn_target_zones()

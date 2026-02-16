@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_qib4q")
 id = "level_01"
-display_name = "Level 1"
+display_name = "level one"
 target_zone_positions = Array[Vector2]([Vector2(320, 180)])
 block_ids = Array[String](["block_1x1"])
 metadata/_custom_type_script = "uid://cjyn0y48epuwx"
