@@ -16,6 +16,14 @@ func _input(event: InputEvent) -> void:
 
 func _mouse_enter() -> void:
 	is_hovered = true
+	if not is_dragging:
+		_tween_scale(1.1)
 
 func _mouse_exit() -> void:
 	is_hovered = false
+	if not is_dragging:
+		_tween_scale(1.0)
+
+func _tween_scale(target_scale: float) -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property($Sprite, "scale", Vector2(target_scale, target_scale), 0.15).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
