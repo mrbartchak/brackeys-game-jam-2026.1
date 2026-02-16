@@ -1,10 +1,10 @@
 class_name BackButton
 extends TextureButton
 
-@export var back_scene: PackedScene
+@export var back_scene_name: String
 
 func _ready() -> void:
 	self.pressed.connect(_on_pressed)
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_packed(back_scene)
+	TransitionManager.transition_to(back_scene_name, 0.6, TransitionManager.TransitionDirection.RIGHT)

@@ -7,8 +7,8 @@ extends Control
 
 func _ready() -> void:
 	play_btn.pressed.connect(func():
-		get_tree().change_scene_to_file("res://ui/screens/level_select.tscn"))
+		TransitionManager.transition_to("level_select"))
 	about_btn.pressed.connect(func():
-		get_tree().change_scene_to_file("res://ui/screens/about.tscn"))
+		TransitionManager.transition_to("about"))
 	quit_btn.pressed.connect(func():
 		get_tree().quit())

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://csb4fm2hdbikq"]
+[gd_scene load_steps=3 format=3 uid="uid://csb4fm2hdbikq"]
 
 [ext_resource type="PackedScene" uid="uid://fh6ephdx8b5i" path="res://ui/components/back_button.tscn" id="1_axpbv"]
 [ext_resource type="Texture2D" uid="uid://bmrsfka7pn13d" path="res://ui/assets/background.png" id="1_ke2im"]
-[ext_resource type="PackedScene" uid="uid://34iqac6l4mrg" path="res://ui/screens/level_select.tscn" id="3_ppdv6"]
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -57,4 +56,4 @@ vertical_alignment = 1
 [node name="BackButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_axpbv")]
 layout_mode = 2
 size_flags_horizontal = 4
-back_scene = ExtResource("3_ppdv6")
+back_scene_name = "level_select"
