@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://0paxfqicjyju"]
+
+[ext_resource type="Texture2D" uid="uid://vinpv2k76edh" path="res://ui/assets/logo.png" id="1_t7e0r"]
+[ext_resource type="Script" uid="uid://cgpsl8e1ategg" path="res://ui/main_menu.gd" id="1_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://bh7tpsxvh1bv8" path="res://ui/assets/menu_buttons.png" id="2_0dkrt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk0pr"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(0, 22, 66, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dkrt"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(0, 0, 66, 22)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk0pr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15294118, 0.16078432, 0.27450982, 1)
+
+[node name="LeftGroup" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 198.0
+grow_vertical = 2
+
+[node name="MenuItems" type="VBoxContainer" parent="LeftGroup"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LeftGroup/MenuItems"]
+layout_mode = 2
+texture = ExtResource("1_t7e0r")
+
+[node name="PlayButton" type="TextureButton" parent="LeftGroup/MenuItems"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 22)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_wk0pr")
+texture_pressed = SubResource("AtlasTexture_0dkrt")
+texture_hover = SubResource("AtlasTexture_0dkrt")
+texture_focused = SubResource("AtlasTexture_wk0pr")
