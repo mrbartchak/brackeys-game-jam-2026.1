@@ -1,7 +1,9 @@
 class_name Block
 extends Area2D
 
+signal placed
 @export var block_type: BlockType
+
 var is_dragging: bool = false
 var is_hovered: bool = false
 
@@ -31,6 +33,7 @@ func _input(event: InputEvent) -> void:
 		elif is_dragging:
 			is_dragging = false
 			_tween_scale(1.0)
+			placed.emit()
 
 func _mouse_enter() -> void:
 	is_hovered = true

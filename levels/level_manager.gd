@@ -30,5 +30,14 @@ func _spawn_blocks() -> void:
 	for block_id in level_data.block_ids:
 		var block: Block = block_scene.instantiate()
 		block.block_type = block_types.get(block_id)
+		block.placed.connect(_check_win)
 		block_container.add_child(block)
-		
+
+func _check_win() -> void:
+	for target_zone: TargetZone in target_zone_container.get_children():
+		if not target_zone.is_covered:
+			return
+	_win()
+
+func _win() -> void:
+	print("win")
