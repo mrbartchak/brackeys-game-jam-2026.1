@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlockType" load_steps=3 format=3 uid="uid://l6d4s60dvdfg"]
+
+[ext_resource type="Script" uid="uid://x54dlv1sximj" path="res://blocks/block_type.gd" id="1_x2551"]
+[ext_resource type="Texture2D" uid="uid://hoqltnqtboa8" path="res://blocks/assets/block.png" id="2_qi8se"]
+
+[resource]
+script = ExtResource("1_x2551")
+id = "block_1x1"
+texture = ExtResource("2_qi8se")
+shapes = Array[Rect2]([Rect2(0, 0, 24, 24)])
+metadata/_custom_type_script = "uid://x54dlv1sximj"
