@@ -7,6 +7,7 @@ signal placed
 static var dragged_block: Block = null
 var is_dragging: bool = false
 var is_hovered: bool = false
+var rotation_index: int = 0
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var placeholder_shape: CollisionShape2D = $PlaceholderShape
@@ -22,34 +23,60 @@ func _ready() -> void:
 		self.add_child(collison_shape)
 	sprite.texture = block_type.texture
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if is_dragging:
 		global_position = lerp(global_position, get_global_mouse_position(), 32.0 * delta)
 
 func _input(event: InputEvent) -> void:
 	if GameManager.input_locked:
 		return
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if is_hovered and not is_dragging and dragged_block == null:
-			is_dragging = true
-			dragged_block = self
-			_tween_scale(1.1)
-		elif is_dragging:
-			is_dragging = false
-			dragged_block = null
-			_tween_scale(1.0)
-			placed.emit()
+	if event is InputEventMouseButton:
+		event = event as InputEventMouseButton
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if is_hovered and not is_dragging and dragged_block == null:
+				_grab_block()
+			elif is_dragging:
+				_place_block()
+		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and is_dragging:
+			_rotate_block()
 
+# ========================
+# ======  ACTIONS   ======
+# ========================
+func _grab_block() -> void:
+	is_dragging = true
+	dragged_block = self
+	_tween_scale(1.1)
+
+func _place_block() -> void:
+	is_dragging = false
+	dragged_block = null
+	_tween_scale(1.0)
+	placed.emit()
+
+func _rotate_block() -> void:
+	print("rotate triggered")
+	rotation_index = (rotation_index + 1) % 8
+	var rotation_angle: float = rotation_index * PI / 4.0
+	global_position = get_global_mouse_position()
+	self.set("rotation", rotation_angle)
+
+# ========================
+# ======  SIGNALS   ======
+# ========================
 func _mouse_enter() -> void:
 	is_hovered = true
 	if not is_dragging:
-		_tween_scale(1.5)
+		_tween_scale(1.35)
 
 func _mouse_exit() -> void:
 	is_hovered = false
 	if not is_dragging:
 		_tween_scale(1.0)
 
+# ========================
+# ======  HELPERS   ======
+# ========================
 func _tween_scale(target_scale: float) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property($Sprite, "scale", Vector2(target_scale, target_scale), 0.15).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
