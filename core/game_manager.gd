@@ -3,7 +3,8 @@ extends Node
 const level_list: Dictionary = {
 	"level_01": preload("res://levels/level_data/level_01.tres"),
 	"level_02": preload("res://levels/level_data/level_02.tres"),
-	"level_03": preload("res://levels/level_data/level_03.tres")
+	"level_03": preload("res://levels/level_data/level_03.tres"),
+	"level_04": preload("res://levels/level_data/level_04.tres")
 }
 
 var current_level_data: LevelData
