@@ -16,3 +16,16 @@ func _ready() -> void:
 		
 	level_label.text = level_number if level_number else "NaN"
 	level_label.add_theme_color_override("font_color", "#e7ffee")
+	
+	if not GameManager.unlocked_levels.has(level_id):
+		_display_locked()
+	else:
+		_display_unlocked()
+
+func _display_locked() -> void:
+	self.disabled = true
+	level_label.hide()
+
+func _display_unlocked() -> void:
+	self.disabled = false
+	level_label.show()

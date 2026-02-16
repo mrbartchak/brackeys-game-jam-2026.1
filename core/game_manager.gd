@@ -15,7 +15,8 @@ var input_locked: bool = false
 
 func _ready() -> void:
 	if unlocked_levels.is_empty():
-		unlocked_levels.append_array(level_list.keys())
+		#unlocked_levels.append_array(level_list.keys())
+		unlocked_levels.append("level_01")
 
 func load_level(level_id: String) -> void:
 	if not level_list.has(level_id):
