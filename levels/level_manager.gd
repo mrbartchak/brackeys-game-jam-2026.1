@@ -42,14 +42,6 @@ func _spawn_blocks() -> void:
 		block.is_filled = block_config.is_filled
 		block.placed.connect(_check_win)
 		block_container.add_child(block)
-	
-	#for block_id in level_data.block_ids:
-		#if not block_types.has(block_id):
-			#print("err: block type does not exist")
-		#var block: Block = block_scene.instantiate()
-		#block.block_type = block_types.get(block_id)
-		#block.placed.connect(_check_win)
-		#block_container.add_child(block)
 
 func _check_win() -> void:
 	for target_zone: TargetZone in target_zone_container.get_children():

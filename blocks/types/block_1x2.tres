@@ -1,11 +1,20 @@
-[gd_resource type="Resource" script_class="BlockType" load_steps=3 format=3 uid="uid://do1v1hkfx6v4c"]
+[gd_resource type="Resource" script_class="BlockType" load_steps=5 format=3 uid="uid://do1v1hkfx6v4c"]
 
 [ext_resource type="Script" uid="uid://x54dlv1sximj" path="res://blocks/block_type.gd" id="1_tsli4"]
-[ext_resource type="Texture2D" uid="uid://cofffl76lb67j" path="res://blocks/assets/block_2.png" id="2_7r5yl"]
+[ext_resource type="Texture2D" uid="uid://dqjp0v1cu176m" path="res://blocks/assets/block_1x2.png" id="2_tsli4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r5yl"]
+atlas = ExtResource("2_tsli4")
+region = Rect2(0, 0, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsli4"]
+atlas = ExtResource("2_tsli4")
+region = Rect2(48, 0, 48, 24)
 
 [resource]
 script = ExtResource("1_tsli4")
 id = "block_1x2"
-texture = ExtResource("2_7r5yl")
+texture_filled = SubResource("AtlasTexture_7r5yl")
+texture_unfilled = SubResource("AtlasTexture_tsli4")
 shapes = Array[Rect2]([Rect2(0, 0, 48, 24)])
 metadata/_custom_type_script = "uid://x54dlv1sximj"

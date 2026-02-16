@@ -23,7 +23,7 @@ func _ready() -> void:
 		collison_shape.position = shape.position
 		collison_shape.shape = rect
 		self.add_child(collison_shape)
-	sprite.texture = block_type.texture
+	_update_visuals()
 
 func _physics_process(delta: float) -> void:
 	if _is_dragging:
@@ -62,6 +62,18 @@ func _rotate_block() -> void:
 	var target_angle: float = _rotation_step * PI / 4.0
 	global_position = get_global_mouse_position()
 	_tween_rotate(target_angle)
+
+func _fill_block() -> void:
+	pass
+
+func _unfill_block() -> void:
+	pass
+
+func _update_visuals() -> void:
+	if is_filled:
+		sprite.texture = block_type.texture_filled
+	else:
+		sprite.texture = block_type.texture_unfilled
 
 # ========================
 # ======  SIGNALS   ======
