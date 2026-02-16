@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3o1mlwx0i77u"]
+
+[ext_resource type="Texture2D" uid="uid://bmrsfka7pn13d" path="res://ui/background.png" id="1_80vhd"]
+[ext_resource type="PackedScene" uid="uid://b0j4jkbwjdq3b" path="res://target_zones/target_zone.tscn" id="2_hjsbj"]
+[ext_resource type="PackedScene" uid="uid://bt3tjhbrgn52g" path="res://blocks/block.tscn" id="3_cwqvt"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_80vhd")
+offset = Vector2(320, 180)
+
+[node name="TargetZones" type="Node2D" parent="."]
+
+[node name="TargetZone" parent="TargetZones" instance=ExtResource("2_hjsbj")]
+position = Vector2(320, 180)
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Block" parent="Blocks" instance=ExtResource("3_cwqvt")]
+position = Vector2(116, 171)
