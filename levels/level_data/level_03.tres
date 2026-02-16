@@ -1,11 +1,17 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://ce74gafd4fohm"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=4 format=3 uid="uid://ce74gafd4fohm"]
 
 [ext_resource type="Script" uid="uid://cjyn0y48epuwx" path="res://levels/level_data.gd" id="1_2biac"]
+[ext_resource type="Script" uid="uid://c4lb5cudd274j" path="res://blocks/block_config.gd" id="1_w8jk7"]
+
+[sub_resource type="Resource" id="Resource_j5kva"]
+script = ExtResource("1_w8jk7")
+block_id = "block_1x2"
+metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [resource]
 script = ExtResource("1_2biac")
 id = "level_03"
 display_name = "level three"
 target_zone_positions = Array[Vector2]([Vector2(296, 180), Vector2(344, 180)])
-block_ids = Array[String](["block_1x2"])
+blocks = Array[ExtResource("1_w8jk7")]([SubResource("Resource_j5kva")])
 metadata/_custom_type_script = "uid://cjyn0y48epuwx"

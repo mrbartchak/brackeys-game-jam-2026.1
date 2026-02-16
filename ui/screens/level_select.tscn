@@ -74,6 +74,11 @@ layout_mode = 2
 level_id = "level_04"
 level_number = "4"
 
+[node name="LevelButton5" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_05"
+level_number = "5"
+
 [node name="Footer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12

@@ -5,9 +5,11 @@ signal placed
 @export var block_type: BlockType
 
 static var dragged_block: Block = null
-var is_dragging: bool = false
-var is_hovered: bool = false
-var rotation_step: int = 0
+var is_filled: bool
+
+var _is_dragging: bool = false
+var _is_hovered: bool = false
+var _rotation_step: int = 0
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var placeholder_shape: CollisionShape2D = $PlaceholderShape
@@ -24,7 +26,7 @@ func _ready() -> void:
 	sprite.texture = block_type.texture
 
 func _physics_process(delta: float) -> void:
-	if is_dragging:
+	if _is_dragging:
 		global_position = lerp(global_position, get_global_mouse_position(), 32.0 * delta)
 
 func _input(event: InputEvent) -> void:
@@ -33,31 +35,31 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		event = event as InputEventMouseButton
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if is_hovered and not is_dragging and dragged_block == null:
+			if _is_hovered and not _is_dragging and dragged_block == null:
 				_grab_block()
-			elif is_dragging:
+			elif _is_dragging:
 				_place_block()
-		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and is_dragging:
+		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and _is_dragging:
 			_rotate_block()
 
 # ========================
 # ======  ACTIONS   ======
 # ========================
 func _grab_block() -> void:
-	is_dragging = true
+	_is_dragging = true
 	dragged_block = self
 	_tween_scale(1.1)
 
 func _place_block() -> void:
-	is_dragging = false
+	_is_dragging = false
 	dragged_block = null
 	_tween_scale(1.0)
 	placed.emit()
 
 func _rotate_block() -> void:
 	print("rotate triggered")
-	rotation_step += 1
-	var target_angle: float = rotation_step * PI / 4.0
+	_rotation_step += 1
+	var target_angle: float = _rotation_step * PI / 4.0
 	global_position = get_global_mouse_position()
 	_tween_rotate(target_angle)
 
@@ -65,13 +67,13 @@ func _rotate_block() -> void:
 # ======  SIGNALS   ======
 # ========================
 func _mouse_enter() -> void:
-	is_hovered = true
-	if not is_dragging:
+	_is_hovered = true
+	if not _is_dragging:
 		_tween_scale(1.35)
 
 func _mouse_exit() -> void:
-	is_hovered = false
-	if not is_dragging:
+	_is_hovered = false
+	if not _is_dragging:
 		_tween_scale(1.0)
 
 # ========================
