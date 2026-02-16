@@ -7,7 +7,7 @@ signal placed
 static var dragged_block: Block = null
 var is_dragging: bool = false
 var is_hovered: bool = false
-var rotation_index: int = 0
+var rotation_step: int = 0
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var placeholder_shape: CollisionShape2D = $PlaceholderShape
@@ -56,10 +56,10 @@ func _place_block() -> void:
 
 func _rotate_block() -> void:
 	print("rotate triggered")
-	rotation_index = (rotation_index + 1) % 8
-	var rotation_angle: float = rotation_index * PI / 4.0
+	rotation_step += 1
+	var target_angle: float = rotation_step * PI / 4.0
 	global_position = get_global_mouse_position()
-	self.set("rotation", rotation_angle)
+	_tween_rotate(target_angle)
 
 # ========================
 # ======  SIGNALS   ======
@@ -77,6 +77,15 @@ func _mouse_exit() -> void:
 # ========================
 # ======  HELPERS   ======
 # ========================
+var _scale_tween: Tween = null
+var _rotate_tween: Tween = null
+
 func _tween_scale(target_scale: float) -> void:
-	var tween: Tween = create_tween()
-	tween.tween_property($Sprite, "scale", Vector2(target_scale, target_scale), 0.15).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	if _scale_tween: _scale_tween.kill()
+	_scale_tween = create_tween()
+	_scale_tween.tween_property($Sprite, "scale", Vector2(target_scale, target_scale), 0.15).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+
+func _tween_rotate(target_rotation: float) -> void:
+	if _rotate_tween: _rotate_tween.kill()
+	_rotate_tween = create_tween()
+	_rotate_tween.tween_property(self, "rotation", target_rotation, 0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
