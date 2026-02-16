@@ -2,7 +2,8 @@ extends Node
 
 const level_list: Dictionary = {
 	"level_01": preload("res://levels/level_data/level_01.tres"),
-	"level_02": preload("res://levels/level_data/level_02.tres")
+	"level_02": preload("res://levels/level_data/level_02.tres"),
+	"level_03": preload("res://levels/level_data/level_03.tres")
 }
 
 var current_level_data: LevelData
@@ -13,8 +14,7 @@ var input_locked: bool = false
 
 func _ready() -> void:
 	if unlocked_levels.is_empty():
-		unlocked_levels.append("level_01")
-		unlocked_levels.append("level_02")
+		unlocked_levels.append_array(level_list.keys())
 
 func load_level(level_id: String) -> void:
 	if not level_list.has(level_id):

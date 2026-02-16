@@ -4,6 +4,7 @@ extends Area2D
 signal placed
 @export var block_type: BlockType
 
+static var dragged_block: Block = null
 var is_dragging: bool = false
 var is_hovered: bool = false
 
@@ -29,11 +30,13 @@ func _input(event: InputEvent) -> void:
 	if GameManager.input_locked:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if is_hovered and not is_dragging:
+		if is_hovered and not is_dragging and dragged_block == null:
 			is_dragging = true
+			dragged_block = self
 			_tween_scale(1.1)
 		elif is_dragging:
 			is_dragging = false
+			dragged_block = null
 			_tween_scale(1.0)
 			placed.emit()
 

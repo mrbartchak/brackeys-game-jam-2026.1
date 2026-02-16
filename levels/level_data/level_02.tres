@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://ce74gafd4fohm"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dowy8xra36rva"]
 
 [ext_resource type="Script" uid="uid://cjyn0y48epuwx" path="res://levels/level_data.gd" id="1_dgdll"]
 
@@ -6,6 +6,6 @@
 script = ExtResource("1_dgdll")
 id = "level_02"
 display_name = "Level 2"
-target_zone_positions = Array[Vector2]([Vector2(296, 180), Vector2(344, 180)])
-block_ids = Array[String](["block_1x2"])
+target_zone_positions = Array[Vector2]([Vector2(270, 165), Vector2(365, 200)])
+block_ids = Array[String](["block_1x1", "block_1x1"])
 metadata/_custom_type_script = "uid://cjyn0y48epuwx"
