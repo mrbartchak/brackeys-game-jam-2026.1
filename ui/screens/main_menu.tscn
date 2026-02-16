@@ -50,7 +50,7 @@ color = Color(0.15294118, 0.16078432, 0.27450982, 1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 198.0
+offset_right = 252.0
 grow_vertical = 2
 
 [node name="MenuButtons" type="VBoxContainer" parent="LeftGroup"]

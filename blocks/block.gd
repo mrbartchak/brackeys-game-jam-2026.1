@@ -26,6 +26,8 @@ func _process(delta: float) -> void:
 		global_position = lerp(global_position, get_global_mouse_position(), 32.0 * delta)
 
 func _input(event: InputEvent) -> void:
+	if GameManager.input_locked:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if is_hovered and not is_dragging:
 			is_dragging = true
@@ -38,7 +40,7 @@ func _input(event: InputEvent) -> void:
 func _mouse_enter() -> void:
 	is_hovered = true
 	if not is_dragging:
-		_tween_scale(1.2)
+		_tween_scale(1.5)
 
 func _mouse_exit() -> void:
 	is_hovered = false

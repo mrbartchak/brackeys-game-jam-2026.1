@@ -1,16 +1,20 @@
 extends Node
 
 const level_list: Dictionary = {
-	"level_01": preload("res://levels/level_data/level_01.tres")
+	"level_01": preload("res://levels/level_data/level_01.tres"),
+	"level_02": preload("res://levels/level_data/level_02.tres")
 }
 
 var current_level_data: LevelData
 var completed_levels: Array[String] = []
 var unlocked_levels: Array[String] = []
 
+var input_locked: bool = false 
+
 func _ready() -> void:
 	if unlocked_levels.is_empty():
 		unlocked_levels.append("level_01")
+		unlocked_levels.append("level_02")
 
 func load_level(level_id: String) -> void:
 	if not level_list.has(level_id):
@@ -20,4 +24,12 @@ func load_level(level_id: String) -> void:
 		print("warn: level is locked")
 		return
 	current_level_data = level_list.get(level_id)
-	get_tree().change_scene_to_file("res://levels/level_manager.tscn")
+	get_tree().change_scene_to_file("res://levels/level.tscn")
+
+#func complete_level(level_id: String) -> void:
+	#
+
+func lock_input() -> void:
+	input_locked = true
+func unlock_input() -> void:
+	input_locked = false
