@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://0paxfqicjyju"]
+[gd_scene load_steps=10 format=3 uid="uid://0paxfqicjyju"]
 
 [ext_resource type="Texture2D" uid="uid://vinpv2k76edh" path="res://ui/assets/logo.png" id="1_t7e0r"]
-[ext_resource type="Script" uid="uid://cgpsl8e1ategg" path="res://ui/main_menu.gd" id="1_wk0pr"]
+[ext_resource type="Script" uid="uid://cgpsl8e1ategg" path="res://ui/screens/main_menu.gd" id="1_wk0pr"]
 [ext_resource type="Texture2D" uid="uid://bh7tpsxvh1bv8" path="res://ui/assets/menu_buttons.png" id="2_0dkrt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wk0pr"]
@@ -19,6 +19,14 @@ region = Rect2(68, 22, 68, 22)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uxxo"]
 atlas = ExtResource("2_0dkrt")
 region = Rect2(68, 0, 68, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rstm"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(136, 22, 68, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qgu1"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(136, 0, 68, 22)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -45,15 +53,19 @@ anchor_bottom = 1.0
 offset_right = 198.0
 grow_vertical = 2
 
-[node name="MenuItems" type="VBoxContainer" parent="LeftGroup"]
+[node name="MenuButtons" type="VBoxContainer" parent="LeftGroup"]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="TextureRect" type="TextureRect" parent="LeftGroup/MenuItems"]
+[node name="LogoMargins" type="MarginContainer" parent="LeftGroup/MenuButtons"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="Logo" type="TextureRect" parent="LeftGroup/MenuButtons/LogoMargins"]
 layout_mode = 2
 texture = ExtResource("1_t7e0r")
 
-[node name="PlayButton" type="TextureButton" parent="LeftGroup/MenuItems"]
+[node name="PlayButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(66, 22)
 layout_mode = 2
@@ -62,7 +74,7 @@ texture_pressed = SubResource("AtlasTexture_0dkrt")
 texture_hover = SubResource("AtlasTexture_0dkrt")
 texture_focused = SubResource("AtlasTexture_wk0pr")
 
-[node name="AboutButton" type="TextureButton" parent="LeftGroup/MenuItems"]
+[node name="AboutButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(66, 22)
 layout_mode = 2
@@ -70,3 +82,12 @@ texture_normal = SubResource("AtlasTexture_rmr83")
 texture_pressed = SubResource("AtlasTexture_8uxxo")
 texture_hover = SubResource("AtlasTexture_8uxxo")
 texture_focused = SubResource("AtlasTexture_rmr83")
+
+[node name="QuitButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 22)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_0rstm")
+texture_pressed = SubResource("AtlasTexture_0qgu1")
+texture_hover = SubResource("AtlasTexture_0qgu1")
+texture_focused = SubResource("AtlasTexture_0rstm")

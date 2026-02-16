@@ -13,6 +13,7 @@ var block_types: Dictionary = {
 @onready var block_container: Node2D = $Blocks
 
 func _ready() -> void:
+	level_data = GameManager.current_level_data
 	if level_data:
 		_build_level()
 

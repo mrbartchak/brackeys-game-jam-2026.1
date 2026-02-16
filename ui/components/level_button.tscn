@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://2bae1rloefoj"]
+
+[ext_resource type="Texture2D" uid="uid://dcwef65hc6sdq" path="res://ui/assets/level_buttons.png" id="1_vycqi"]
+[ext_resource type="Script" uid="uid://b8bgp866741yb" path="res://ui/components/level_button.gd" id="2_xj4ek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj4ek"]
+atlas = ExtResource("1_vycqi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cptc"]
+atlas = ExtResource("1_vycqi")
+region = Rect2(0, 32, 32, 32)
+
+[node name="LevelButton" type="TextureButton"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = SubResource("AtlasTexture_xj4ek")
+texture_pressed = SubResource("AtlasTexture_2cptc")
+texture_hover = SubResource("AtlasTexture_2cptc")
+texture_focused = SubResource("AtlasTexture_xj4ek")
+script = ExtResource("2_xj4ek")
+
+[node name="LevelLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(27, 16)
+layout_mode = 0
+offset_left = 0.5
+offset_top = 9.0
+offset_right = 32.5
+offset_bottom = 25.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

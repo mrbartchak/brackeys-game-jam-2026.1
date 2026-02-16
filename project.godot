@@ -16,7 +16,8 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
-Cursor="*res://cursor/cursor.tscn"
+Cursor="*res://ui/cursor/cursor.tscn"
+GameManager="*res://core/game_manager.gd"
 
 [display]
 
