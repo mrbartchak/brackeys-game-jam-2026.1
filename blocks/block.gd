@@ -19,6 +19,10 @@ func _ready() -> void:
 		self.add_child(collison_shape)
 	sprite.texture = block_type.texture
 
+func _process(delta: float) -> void:
+	if is_dragging:
+		global_position = lerp(global_position, get_global_mouse_position(), 32.0 * delta)
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if is_hovered and not is_dragging:
@@ -27,14 +31,11 @@ func _input(event: InputEvent) -> void:
 		elif is_dragging:
 			is_dragging = false
 			_tween_scale(1.0)
-	
-	if event is InputEventMouseMotion and is_dragging:
-		global_position = get_global_mouse_position()
 
 func _mouse_enter() -> void:
 	is_hovered = true
 	if not is_dragging:
-		_tween_scale(1.1)
+		_tween_scale(1.2)
 
 func _mouse_exit() -> void:
 	is_hovered = false

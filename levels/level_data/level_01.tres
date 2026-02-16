@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://b28ytryon3mx0"]
+
+[ext_resource type="Script" uid="uid://cjyn0y48epuwx" path="res://levels/level_data.gd" id="1_qib4q"]
+
+[resource]
+script = ExtResource("1_qib4q")
+id = "level_01"
+display_name = "Level 1"
+target_zone_positions = Array[Vector2]([Vector2(320, 180)])
+block_ids = Array[String](["block_1x1"])
+metadata/_custom_type_script = "uid://cjyn0y48epuwx"

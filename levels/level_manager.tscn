@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3o1mlwx0i77u"]
+
+[ext_resource type="Script" uid="uid://bb4ci5k6gpr5t" path="res://levels/level_manager.gd" id="1_6tvrh"]
+[ext_resource type="Resource" uid="uid://b28ytryon3mx0" path="res://levels/level_data/level_01.tres" id="2_ce4gc"]
+[ext_resource type="Texture2D" uid="uid://bmrsfka7pn13d" path="res://ui/background.png" id="2_k4541"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ce4gc"]
+font_color = Color(0.90588236, 1, 0.93333334, 1)
+
+[node name="LevelManager" type="Node2D"]
+script = ExtResource("1_6tvrh")
+level_data = ExtResource("2_ce4gc")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_k4541")
+offset = Vector2(320, 180)
+
+[node name="TargetZones" type="Node2D" parent="."]
+
+[node name="Blocks" type="Node2D" parent="."]
+position = Vector2(320, 320)
+
+[node name="UI" type="Control" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 34.0
+grow_horizontal = 2
+
+[node name="LevelLabel" type="Label" parent="UI/CenterContainer"]
+layout_mode = 2
+text = "level one"
+label_settings = SubResource("LabelSettings_ce4gc")
