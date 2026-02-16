@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8blbxlhm3tsf"]
+
+[ext_resource type="Texture2D" uid="uid://bjl7lxkwti3r6" path="res://ui/assets/avatar.png" id="1_2y2k4"]
+[ext_resource type="PackedScene" uid="uid://fh6ephdx8b5i" path="res://ui/components/back_button.tscn" id="2_ygndi"]
+[ext_resource type="PackedScene" uid="uid://0paxfqicjyju" path="res://ui/main_menu.tscn" id="3_0ca1n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2y2k4"]
+font_color = Color(0.92941177, 0.627451, 0.19215687, 1)
+
+[node name="About" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15294118, 0.16078432, 0.27450982, 1)
+
+[node name="CenterContent" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="CenterContent"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Avatar" type="TextureRect" parent="CenterContent/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_2y2k4")
+stretch_mode = 2
+
+[node name="Username" type="Label" parent="CenterContent/Content"]
+layout_mode = 2
+text = "@zekenekdev"
+label_settings = SubResource("LabelSettings_2y2k4")
+
+[node name="BackButton" parent="." instance=ExtResource("2_ygndi")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -80.0
+offset_right = 16.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+back_scene = ExtResource("3_0ca1n")
