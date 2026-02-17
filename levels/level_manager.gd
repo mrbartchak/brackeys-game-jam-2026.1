@@ -17,7 +17,7 @@ var block_types: Dictionary = {
 @onready var win_screen: Control = %WinScreen
 
 func _ready() -> void:
-	level_data = GameManager.current_level_data
+	#level_data = GameManager.current_level_data
 	if level_data:
 		_build_level()
 	GameManager.unlock_input()
