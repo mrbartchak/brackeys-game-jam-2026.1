@@ -5,3 +5,4 @@ extends Resource
 @export var display_name: String
 @export var target_zone_positions: Array[Vector2]
 @export var blocks: Array[BlockConfig]
+@export var target_score: int

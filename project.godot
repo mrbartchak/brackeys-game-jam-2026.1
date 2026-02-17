@@ -19,6 +19,12 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 Cursor="*res://ui/cursor/cursor.tscn"
 GameManager="*res://core/game_manager.gd"
 TransitionManager="*res://core/transition_manager.gd"
+EventBus="*res://core/event_bus.gd"
+AudioManager="*res://core/audio_manager.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 

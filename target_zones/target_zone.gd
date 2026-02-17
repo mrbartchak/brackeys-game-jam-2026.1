@@ -1,7 +1,7 @@
 class_name TargetZone
 extends Area2D
 
-var value: int = 0
+var value: int = 1
 
 var overlapping_blocks: int = 0
 var is_covered: bool = false

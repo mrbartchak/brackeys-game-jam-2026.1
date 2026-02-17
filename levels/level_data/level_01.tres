@@ -16,4 +16,5 @@ id = "level_01"
 display_name = "level one"
 target_zone_positions = Array[Vector2]([Vector2(320, 180)])
 blocks = Array[ExtResource("1_7144f")]([SubResource("Resource_6443f")])
+target_score = 1
 metadata/_custom_type_script = "uid://cjyn0y48epuwx"

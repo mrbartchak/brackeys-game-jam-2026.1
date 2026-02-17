@@ -1,7 +1,7 @@
 class_name Block
 extends Area2D
 
-signal placed
+signal placed(block: Block)
 signal filled_changed()
 
 @export var block_type: BlockType
@@ -57,10 +57,10 @@ func _place_block() -> void:
 	_is_dragging = false
 	dragged_block = null
 	_tween_scale(1.0)
-	placed.emit()
+	placed.emit(self)
 
 func _rotate_block() -> void:
-	print("rotate triggered")
+	AudioManager.play_block_rotate()
 	_rotation_step += 1
 	var target_angle: float = _rotation_step * PI / 4.0
 	global_position = get_global_mouse_position()

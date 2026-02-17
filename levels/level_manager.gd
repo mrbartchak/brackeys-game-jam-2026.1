@@ -3,6 +3,7 @@ extends Node2D
 
 @export var level_data: LevelData
 
+var current_score: int = 0
 var target_zone_scene: PackedScene = preload("res://target_zones/target_zone.tscn")
 var block_scene: PackedScene = preload("res://blocks/block.tscn")
 var block_types: Dictionary = {
@@ -13,16 +14,21 @@ var block_types: Dictionary = {
 
 @onready var target_zone_container: Node2D = $TargetZones
 @onready var block_container: Node2D = $Blocks
+# UI
 @onready var level_label: Label = %LevelLabel
 @onready var win_screen: Control = %WinScreen
+@onready var score_label: Label = %ScoreLabel
 
 func _ready() -> void:
 	level_data = GameManager.current_level_data
 	if level_data:
 		_build_level()
 	GameManager.unlock_input()
-	level_label.text = level_data.display_name
+	_update_ui()
 
+# =======================
+# ====== ACTIONS ========
+# =======================
 func _build_level() -> void:
 	_spawn_target_zones()
 	_spawn_blocks()
@@ -42,17 +48,40 @@ func _spawn_blocks() -> void:
 		block.position = block_config.position
 		block.is_filled = block_config.is_filled
 		block.is_locked = block_config.is_locked
-		block.placed.connect(_check_win)
+		block.placed.connect(_try_score)
 		block_container.add_child(block)
 
-func _check_win() -> void:
+func _try_score(block: Block) -> void:
+	var points: int = 0
+	var is_valid: bool = false
 	for target_zone: TargetZone in target_zone_container.get_children():
-		if not target_zone.is_covered:
-			return
-	_win()
+		if target_zone.is_covered:
+			is_valid = true
+			points += target_zone.value
+	if is_valid:
+		block.queue_free()
+		_score(points)
+		return
+	#not valid then... so return block somehow?
+
+func _score(points: int) -> void:
+	current_score += points
+	_update_ui()
+	_check_win()
+
+func _check_win() -> void:
+	if current_score >= level_data.target_score:
+		_win()
 
 func _win() -> void:
 	GameManager.lock_input()
 	await get_tree().create_timer(.3).timeout
 	win_screen.show()
 	print("win")
+
+# =======================
+# ========= UI ==========
+# =======================
+func _update_ui() -> void:
+	level_label.text = level_data.display_name
+	score_label.text = str(current_score)
