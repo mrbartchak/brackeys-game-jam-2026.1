@@ -1,11 +1,19 @@
 class_name TargetZone
 extends Area2D
 
+var value: int = 0
+
 var overlapping_blocks: int = 0
 var is_covered: bool = false
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var sprite_filled: Sprite2D = $SpriteFilled
+
+func score() -> int:
+	self.monitoring = false
+	sprite.hide()
+	sprite_filled.hide()
+	return value
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("blocks"):

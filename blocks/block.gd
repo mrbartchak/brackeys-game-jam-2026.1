@@ -3,6 +3,7 @@ extends Area2D
 
 signal placed
 signal filled_changed()
+
 @export var block_type: BlockType
 
 static var dragged_block: Block = null
