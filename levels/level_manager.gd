@@ -7,7 +7,8 @@ var target_zone_scene: PackedScene = preload("res://target_zones/target_zone.tsc
 var block_scene: PackedScene = preload("res://blocks/block.tscn")
 var block_types: Dictionary = {
 	"block_1x1": preload("res://blocks/types/block_1x1.tres"),
-	"block_1x2": preload("res://blocks/types/block_1x2.tres")
+	"block_1x2": preload("res://blocks/types/block_1x2.tres"),
+	"block_1x3": preload("res://blocks/types/block_1x3.tres")
 }
 
 @onready var target_zone_container: Node2D = $TargetZones

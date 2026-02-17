@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BlockType" load_steps=5 format=3 uid="uid://crc2ekid67kw8"]
+
+[ext_resource type="Script" uid="uid://x54dlv1sximj" path="res://blocks/block_type.gd" id="1_nr32c"]
+[ext_resource type="Texture2D" uid="uid://88kgx3kbho60" path="res://blocks/assets/block_1x3.png" id="2_hbyrq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qeob"]
+atlas = ExtResource("2_hbyrq")
+region = Rect2(0, 0, 72, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbyrq"]
+atlas = ExtResource("2_hbyrq")
+region = Rect2(72, 0, 72, 24)
+
+[resource]
+script = ExtResource("1_nr32c")
+id = "block_1x3"
+texture_filled = SubResource("AtlasTexture_8qeob")
+texture_unfilled = SubResource("AtlasTexture_hbyrq")
+shapes = Array[Rect2]([Rect2(0, 0, 72, 24)])
+metadata/_custom_type_script = "uid://x54dlv1sximj"
