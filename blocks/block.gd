@@ -2,7 +2,7 @@ class_name Block
 extends Area2D
 
 signal placed
-signal filled_changed(is_filled: bool)
+signal filled_changed()
 @export var block_type: BlockType
 
 static var dragged_block: Block = null
@@ -65,27 +65,28 @@ func _rotate_block() -> void:
 	global_position = get_global_mouse_position()
 	_tween_rotate(target_angle)
 
-
-
-
-
-
-#func _check_fill() -> void:
-	#for area in get_overlapping_areas():
-		#if area.is_in_group("blocks") and area.is_filled:
-			#is_filled = true
-			#return
-	#is_filled = false
+func _check_fill() -> void:
+	if is_locked:
+		return
+	for area in get_overlapping_areas():
+		if area.is_in_group("blocks") and area.is_filled:
+			_fill_block()
+			return
+	_unfill_block()
 #
 func _fill_block() -> void:
-	if is_locked:
+	if is_locked or is_filled:
 		return
-	filled_changed.emit(true)
+	is_filled = true
+	_update_visuals()
+	filled_changed.emit()
 
 func _unfill_block() -> void:
-	if is_locked:
+	if is_locked or not is_filled:
 		return
-	filled_changed.emit(false)
+	is_filled = false
+	_update_visuals()
+	filled_changed.emit()
 
 func _update_visuals() -> void:
 	if is_filled:
@@ -108,15 +109,21 @@ func _mouse_exit() -> void:
 	if not _is_dragging:
 		_tween_scale(1.0)
 
-#func _on_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("blocks"):
-		#area = area as Block
-		#area.filled_changed.connect()
-		#if area.is_filled:
-			#_fill_block()
-#
-#func _on_area_exited(area: Area2D) -> void:
-	#pass # Replace with function body.
+func _on_area_entered(area: Area2D) -> void:
+	if is_locked:
+		return
+	if area.is_in_group("blocks"):
+		area = area as Block
+		area.filled_changed.connect(_check_fill)
+		_check_fill()
+
+func _on_area_exited(area: Area2D) -> void:
+	if is_locked:
+		return
+	if area.is_in_group("blocks"):
+		area = area as Block
+		area.filled_changed.disconnect(_check_fill)
+		_check_fill()
 
 # ========================
 # ======  HELPERS   ======

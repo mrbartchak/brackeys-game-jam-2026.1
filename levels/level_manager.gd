@@ -40,6 +40,7 @@ func _spawn_blocks() -> void:
 		block.block_type = block_types.get(block_config.block_id)
 		block.position = block_config.position
 		block.is_filled = block_config.is_filled
+		block.is_locked = block_config.is_locked
 		block.placed.connect(_check_win)
 		block_container.add_child(block)
 
