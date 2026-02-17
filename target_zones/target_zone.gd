@@ -7,18 +7,26 @@ var is_covered: bool = false
 @onready var sprite: Sprite2D = $Sprite
 @onready var sprite_filled: Sprite2D = $SpriteFilled
 
-
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("blocks"):
-		overlapping_blocks += 1
-		is_covered = true
+		area = area as Block
+		area.filled_changed.connect(_check_covered)
+		_check_covered()
 		_update_visuals()
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("blocks"):
-		overlapping_blocks -= 1
-		is_covered = overlapping_blocks > 0
+		area = area as Block
+		area.filled_changed.disconnect(_check_covered)
+		_check_covered()
 		_update_visuals()
+
+func _check_covered() -> void:
+	for area in get_overlapping_areas():
+		if area.is_in_group("blocks") and area.is_filled:
+			is_covered = true
+			return
+	is_covered = false
 
 func _update_visuals() -> void:
 	if is_covered:

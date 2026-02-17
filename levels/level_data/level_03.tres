@@ -6,6 +6,8 @@
 [sub_resource type="Resource" id="Resource_j5kva"]
 script = ExtResource("1_w8jk7")
 block_id = "block_1x2"
+is_filled = true
+is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [resource]
