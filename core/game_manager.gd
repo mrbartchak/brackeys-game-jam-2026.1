@@ -5,7 +5,8 @@ const level_list: Dictionary = {
 	"level_02": preload("res://levels/level_data/level_02.tres"),
 	"level_03": preload("res://levels/level_data/level_03.tres"),
 	"level_04": preload("res://levels/level_data/level_04.tres"),
-	"level_05": preload("res://levels/level_data/level_05.tres")
+	"level_05": preload("res://levels/level_data/level_05.tres"),
+	"level_06": preload("res://levels/level_data/level_06.tres")
 }
 
 var current_level_data: LevelData
