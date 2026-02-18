@@ -5,7 +5,8 @@ enum TransitionDirection { LEFT, RIGHT }
 var scenes: Dictionary = {
 	"main_menu": preload("res://ui/screens/main_menu.tscn"),
 	"level_select": preload("res://ui/screens/level_select.tscn"),
-	"about": preload("res://ui/screens/about.tscn")
+	"about": preload("res://ui/screens/about.tscn"),
+	"controls": preload("res://ui/screens/controls.tscn")
 }
 
 func transition_to(scene_name: String, duration: float = 0.6, direction: TransitionDirection = TransitionDirection.LEFT) -> void:

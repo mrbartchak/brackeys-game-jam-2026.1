@@ -74,6 +74,15 @@ texture_pressed = SubResource("AtlasTexture_0dkrt")
 texture_hover = SubResource("AtlasTexture_0dkrt")
 texture_focused = SubResource("AtlasTexture_wk0pr")
 
+[node name="ControlsButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 22)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_rmr83")
+texture_pressed = SubResource("AtlasTexture_8uxxo")
+texture_hover = SubResource("AtlasTexture_8uxxo")
+texture_focused = SubResource("AtlasTexture_rmr83")
+
 [node name="AboutButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(66, 22)

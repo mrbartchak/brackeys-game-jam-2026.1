@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://btklv0vi18fjx"]
+
+[ext_resource type="PackedScene" uid="uid://fh6ephdx8b5i" path="res://ui/components/back_button.tscn" id="1_2try8"]
+[ext_resource type="Texture2D" uid="uid://bmrsfka7pn13d" path="res://ui/assets/background.png" id="1_jr4f2"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("1_jr4f2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(310, 120)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -50.0
+offset_right = 155.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[wave]left mouse: 			pick up & place blocks
+right mouse: 			rotate block
+esc: 						pause level
+space: 					restart level"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BackButton" parent="." instance=ExtResource("1_2try8")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -52.0
+offset_right = 16.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+back_scene_name = "main_menu"
