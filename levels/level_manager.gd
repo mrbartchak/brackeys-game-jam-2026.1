@@ -102,7 +102,7 @@ func _win() -> void:
 	GameManager.lock_input()
 	await get_tree().create_timer(.3).timeout
 	win_screen.show()
-	print("win")
+	AudioManager.play_win()
 
 # =======================
 # ========= UI ==========
@@ -115,7 +115,7 @@ func _update_ui() -> void:
 # ======= Helpers =======
 # =======================
 func _play_target_zone_pop(area: Node2D) -> void:
-	AudioManager.play_block_rotate()
+	AudioManager.play_zone_scored()
 	var tween = create_tween()
 	tween.tween_property(area, "scale", Vector2.ZERO, 0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	await tween.finished
