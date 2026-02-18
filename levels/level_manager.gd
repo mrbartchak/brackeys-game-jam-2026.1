@@ -73,12 +73,11 @@ func _try_score(block: Block) -> void:
 func _begin_score_sequence(block: Block, scored_zones: Array[TargetZone]) -> void:
 	GameManager.lock_input()
 	var total_points: int = _tally_points(block, scored_zones)
-	#play target zone effect
+
+	_play_block_scored_effect(block)
 	for scored_zone: TargetZone in scored_zones:
 		_play_target_zone_pop(scored_zone)
 	await get_tree().create_timer(0.5).timeout
-	#play block effect
-	block.queue_free()
 	#await for them to be done
 	#tally the points
 	#add to score
@@ -105,8 +104,8 @@ func _check_win() -> void:
 func _win() -> void:
 	GameManager.lock_input()
 	await get_tree().create_timer(.3).timeout
-	win_screen.show()
 	AudioManager.play_win()
+	win_screen.show()
 
 # =======================
 # ========= UI ==========
@@ -126,8 +125,9 @@ func _play_target_zone_pop(area: Node2D) -> void:
 	area.queue_free()
 
 func _play_block_scored_effect(block: Node2D) -> void:
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.2).timeout
 	var tween = create_tween()
 	tween.tween_property(block, "modulate:a", 0.0, 0.2)
+	tween.parallel().tween_property(block, "scale", Vector2.ZERO, 0.2)
 	await tween.finished
 	block.queue_free()
