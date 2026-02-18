@@ -1,16 +1,28 @@
 extends AudioStreamPlayer
 
+var music_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
 
+var music_main: AudioStream = preload("res://core/audio/sonican_dream_ambient_loop.wav")
 var sfx_pen_click: AudioStream = preload("res://core/audio/pen_click.wav")
 var sfx_deep_pop: AudioStream = preload("res://core/audio/deep_pop.wav")
 var sfx_win: AudioStream = preload("res://core/audio/win_sound.wav")
 
 func _ready() -> void:
+	music_player = AudioStreamPlayer.new()
+	add_child(music_player)
+	
 	sfx_player = AudioStreamPlayer.new()
 	add_child(sfx_player)
+	
 	get_tree().node_added.connect(_on_node_added)
 	_connect_existing_buttons(get_tree().root)
+	play_music(music_main, -20.0)
+
+func play_music(audio: AudioStream, volume: float = 0.0) -> void:
+	music_player.stream = audio
+	music_player.volume_db = volume
+	music_player.play()
 
 func play_sfx(audio: AudioStream, pitch_range: float = 0.0, volume: float = 0.0) -> void:
 	sfx_player.pitch_scale = 1.0 if pitch_scale == 0.0 else randf_range(1.0 - pitch_range, 1.0 + pitch_range)
