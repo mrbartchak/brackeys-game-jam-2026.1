@@ -125,7 +125,7 @@ func _play_target_zone_pop(area: Node2D) -> void:
 	area.queue_free()
 
 func _play_block_scored_effect(block: Node2D) -> void:
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.1).timeout
 	var tween = create_tween()
 	tween.tween_property(block, "modulate:a", 0.0, 0.2)
 	tween.parallel().tween_property(block, "scale", Vector2.ZERO, 0.2)

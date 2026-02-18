@@ -10,6 +10,7 @@ var sfx_win: AudioStream = preload("res://core/audio/win_sound.wav")
 
 func _ready() -> void:
 	music_player = AudioStreamPlayer.new()
+	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(music_player)
 	
 	sfx_player = AudioStreamPlayer.new()
