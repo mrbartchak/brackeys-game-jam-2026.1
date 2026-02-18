@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2mwy5yh4a048" path="res://ui/cursor/cursor.png" id="1_isnha"]
 
 [node name="Cursor" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_g0wji")
 
 [node name="Sprite" type="Sprite2D" parent="."]
