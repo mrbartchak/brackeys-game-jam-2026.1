@@ -26,6 +26,10 @@ func _ready() -> void:
 	GameManager.unlock_input()
 	_update_ui()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_select"):
+		get_tree().reload_current_scene()
+
 # =======================
 # ==== Level Build ======
 # =======================
