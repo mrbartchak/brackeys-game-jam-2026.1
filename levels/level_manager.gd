@@ -27,7 +27,7 @@ func _ready() -> void:
 	_update_ui()
 
 # =======================
-# ====== ACTIONS ========
+# ==== Level Build ======
 # =======================
 func _build_level() -> void:
 	_spawn_target_zones()
@@ -51,18 +51,43 @@ func _spawn_blocks() -> void:
 		block.placed.connect(_try_score)
 		block_container.add_child(block)
 
+# =======================
+# ======= Scoring =======
+# =======================
 func _try_score(block: Block) -> void:
-	var points: int = 0
 	var is_valid: bool = false
+	var scored_zones: Array[TargetZone] = []
 	for target_zone: TargetZone in target_zone_container.get_children():
 		if target_zone.is_covered:
 			is_valid = true
-			points += target_zone.value
+			scored_zones.append(target_zone)
 	if is_valid:
-		block.queue_free()
-		_score(points)
+		_begin_score_sequence(block, scored_zones)
 		return
 	#not valid then... so return block somehow?
+
+func _begin_score_sequence(block: Block, scored_zones: Array[TargetZone]) -> void:
+	GameManager.lock_input()
+	var total_points: int = _tally_points(block, scored_zones)
+	#play target zone effect
+	for scored_zone: TargetZone in scored_zones:
+		_play_target_zone_pop(scored_zone)
+	await get_tree().create_timer(0.5).timeout
+	#play block effect
+	block.queue_free()
+	#await for them to be done
+	#tally the points
+	#add to score
+	_score(total_points)
+	#remove nodes
+	GameManager.unlock_input()
+
+func _tally_points(_block: Block, scored_zones: Array[TargetZone]) -> int:
+	var points: int = 0
+	for scored_zone: TargetZone in scored_zones:
+		points += scored_zone.value
+	return points
+
 
 func _score(points: int) -> void:
 	current_score += points
@@ -85,3 +110,20 @@ func _win() -> void:
 func _update_ui() -> void:
 	level_label.text = level_data.display_name
 	score_label.text = str(current_score)
+
+# =======================
+# ======= Helpers =======
+# =======================
+func _play_target_zone_pop(area: Node2D) -> void:
+	AudioManager.play_block_rotate()
+	var tween = create_tween()
+	tween.tween_property(area, "scale", Vector2.ZERO, 0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	await tween.finished
+	area.queue_free()
+
+func _play_block_scored_effect(block: Node2D) -> void:
+	await get_tree().create_timer(0.5).timeout
+	var tween = create_tween()
+	tween.tween_property(block, "modulate:a", 0.0, 0.2)
+	await tween.finished
+	block.queue_free()
