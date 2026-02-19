@@ -6,14 +6,14 @@
 [sub_resource type="Resource" id="Resource_6443f"]
 script = ExtResource("1_7144f")
 block_id = "block_1x1"
-position = Vector2(-48, 0)
+position = Vector2(-36, 0)
 is_filled = true
 is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [sub_resource type="Resource" id="Resource_7144f"]
 script = ExtResource("1_7144f")
-block_id = "block_1x2"
+block_id = "block_1x1"
 is_filled = true
 is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://c4lb5cudd274j"
 [sub_resource type="Resource" id="Resource_2p6wp"]
 script = ExtResource("1_7144f")
 block_id = "block_1x1"
-position = Vector2(48, 0)
+position = Vector2(36, 0)
 is_filled = true
 is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"

@@ -1,12 +1,36 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://dowy8xra36rva"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=6 format=3 uid="uid://dowy8xra36rva"]
 
 [ext_resource type="Script" uid="uid://cjyn0y48epuwx" path="res://levels/level_data.gd" id="1_dgdll"]
 [ext_resource type="Script" uid="uid://c4lb5cudd274j" path="res://blocks/block_config.gd" id="1_se2eo"]
+
+[sub_resource type="Resource" id="Resource_se2eo"]
+script = ExtResource("1_se2eo")
+block_id = "block_1x1"
+position = Vector2(-36, 0)
+is_filled = true
+is_locked = true
+metadata/_custom_type_script = "uid://c4lb5cudd274j"
+
+[sub_resource type="Resource" id="Resource_0w07y"]
+script = ExtResource("1_se2eo")
+block_id = "block_1x1"
+is_filled = true
+is_locked = true
+metadata/_custom_type_script = "uid://c4lb5cudd274j"
+
+[sub_resource type="Resource" id="Resource_jhdwf"]
+script = ExtResource("1_se2eo")
+block_id = "block_1x1"
+position = Vector2(36, 0)
+is_filled = true
+is_locked = true
+metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [resource]
 script = ExtResource("1_dgdll")
 id = "level_02"
 display_name = "level two"
 target_zone_positions = Array[Vector2]([Vector2(270, 165), Vector2(365, 200)])
+blocks = Array[ExtResource("1_se2eo")]([SubResource("Resource_se2eo"), SubResource("Resource_0w07y"), SubResource("Resource_jhdwf")])
 target_score = 2
 metadata/_custom_type_script = "uid://cjyn0y48epuwx"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://0paxfqicjyju"]
+[gd_scene load_steps=11 format=3 uid="uid://0paxfqicjyju"]
 
 [ext_resource type="Texture2D" uid="uid://vinpv2k76edh" path="res://ui/assets/logo.png" id="1_t7e0r"]
 [ext_resource type="Script" uid="uid://cgpsl8e1ategg" path="res://ui/screens/main_menu.gd" id="1_wk0pr"]
 [ext_resource type="Texture2D" uid="uid://bh7tpsxvh1bv8" path="res://ui/assets/menu_buttons.png" id="2_0dkrt"]
+[ext_resource type="PackedScene" uid="uid://3owvb8lvo86n" path="res://ui/components/eye_icon.tscn" id="4_0rstm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wk0pr"]
 atlas = ExtResource("2_0dkrt")
@@ -63,7 +64,9 @@ theme_override_constants/margin_bottom = 8
 
 [node name="Logo" type="TextureRect" parent="LeftGroup/MenuButtons/LogoMargins"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("1_t7e0r")
+stretch_mode = 2
 
 [node name="PlayButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
 unique_name_in_owner = true
@@ -100,3 +103,105 @@ texture_normal = SubResource("AtlasTexture_0rstm")
 texture_pressed = SubResource("AtlasTexture_0qgu1")
 texture_hover = SubResource("AtlasTexture_0qgu1")
 texture_focused = SubResource("AtlasTexture_0rstm")
+
+[node name="EyeContainer" type="Node2D" parent="."]
+
+[node name="EyeIcon" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(107, 54)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon2" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(48, 125)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon3" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(224, 108)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon4" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(249, 1)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon5" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(2, 223)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon6" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(83, 280)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon7" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(237, 206)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon8" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(30, 27)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon9" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(441.5, 101.5)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon10" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(382.5, 172.5)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon11" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(558.5, 155.5)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon12" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(583.5, 48.5)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon13" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(336.5, 270.5)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon14" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(433.5, 311.5)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon15" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(571.5, 253.5)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon16" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(364.5, 74.5)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon17" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(225, 322)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon18" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(79, 357)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon19" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(588, 355)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon20" parent="EyeContainer" instance=ExtResource("4_0rstm")]
+position = Vector2(474, 4)
+animation = &"close"
+start_awake = true

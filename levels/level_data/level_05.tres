@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=5 format=3 uid="uid://cbuyouoc87xty"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=6 format=3 uid="uid://cbuyouoc87xty"]
 
 [ext_resource type="Script" uid="uid://cjyn0y48epuwx" path="res://levels/level_data.gd" id="1_4rihi"]
 [ext_resource type="Script" uid="uid://c4lb5cudd274j" path="res://blocks/block_config.gd" id="1_c0ap4"]
@@ -6,22 +6,31 @@
 [sub_resource type="Resource" id="Resource_0j7bc"]
 script = ExtResource("1_c0ap4")
 block_id = "block_1x1"
-position = Vector2(-20, 0)
+position = Vector2(-48, 0)
 is_filled = true
 is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [sub_resource type="Resource" id="Resource_0wr1i"]
 script = ExtResource("1_c0ap4")
+block_id = "block_1x2"
+is_filled = true
+is_locked = true
+metadata/_custom_type_script = "uid://c4lb5cudd274j"
+
+[sub_resource type="Resource" id="Resource_c0ap4"]
+script = ExtResource("1_c0ap4")
 block_id = "block_1x1"
-position = Vector2(20, 0)
+position = Vector2(48, 0)
+is_filled = true
+is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [resource]
 script = ExtResource("1_4rihi")
 id = "level_05"
-display_name = "level five"
-target_zone_positions = Array[Vector2]([Vector2(320, 145), Vector2(320, 215)])
-blocks = Array[ExtResource("1_c0ap4")]([SubResource("Resource_0j7bc"), SubResource("Resource_0wr1i")])
-target_score = 2
+display_name = "level five WIP"
+target_zone_positions = Array[Vector2]([Vector2(180, 160), Vector2(180, 196), Vector2(350, 140), Vector2(490, 220)])
+blocks = Array[ExtResource("1_c0ap4")]([SubResource("Resource_0j7bc"), SubResource("Resource_0wr1i"), SubResource("Resource_c0ap4")])
+target_score = 4
 metadata/_custom_type_script = "uid://cjyn0y48epuwx"

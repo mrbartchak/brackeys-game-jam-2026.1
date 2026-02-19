@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://btklv0vi18fjx"]
+[gd_scene load_steps=4 format=3 uid="uid://btklv0vi18fjx"]
 
 [ext_resource type="PackedScene" uid="uid://fh6ephdx8b5i" path="res://ui/components/back_button.tscn" id="1_2try8"]
 [ext_resource type="Texture2D" uid="uid://bmrsfka7pn13d" path="res://ui/assets/background.png" id="1_jr4f2"]
+[ext_resource type="PackedScene" uid="uid://3owvb8lvo86n" path="res://ui/components/eye_icon.tscn" id="3_ps8we"]
 
 [node name="Controls" type="Control"]
 layout_mode = 3
@@ -53,3 +54,45 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 back_scene_name = "main_menu"
+
+[node name="EyeContainer" type="Node2D" parent="."]
+
+[node name="EyeIcon" parent="EyeContainer" instance=ExtResource("3_ps8we")]
+position = Vector2(123, 93)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon2" parent="EyeContainer" instance=ExtResource("3_ps8we")]
+position = Vector2(555, 47)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon3" parent="EyeContainer" instance=ExtResource("3_ps8we")]
+position = Vector2(529, 293)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon4" parent="EyeContainer" instance=ExtResource("3_ps8we")]
+position = Vector2(277, 42)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon5" parent="EyeContainer" instance=ExtResource("3_ps8we")]
+position = Vector2(72, 298)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon6" parent="EyeContainer" instance=ExtResource("3_ps8we")]
+position = Vector2(447, 199)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon7" parent="EyeContainer" instance=ExtResource("3_ps8we")]
+position = Vector2(263, 215)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon8" parent="EyeContainer" instance=ExtResource("3_ps8we")]
+position = Vector2(37, 32)
+animation = &"close"
+start_awake = true
