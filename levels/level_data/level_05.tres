@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://c4lb5cudd274j"
 [resource]
 script = ExtResource("1_4rihi")
 id = "level_05"
-display_name = "level five WIP"
+display_name = "level five"
 target_zone_positions = Array[Vector2]([Vector2(180, 160), Vector2(180, 196), Vector2(350, 140), Vector2(490, 220)])
 blocks = Array[ExtResource("1_c0ap4")]([SubResource("Resource_0j7bc"), SubResource("Resource_0wr1i"), SubResource("Resource_c0ap4")])
 target_score = 4

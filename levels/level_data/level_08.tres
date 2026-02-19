@@ -6,24 +6,31 @@
 [sub_resource type="Resource" id="Resource_0j7bc"]
 script = ExtResource("1_h70xq")
 block_id = "block_1x3"
-position = Vector2(-160, 0)
+position = Vector2(-88, 0)
+is_filled = true
+is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [sub_resource type="Resource" id="Resource_0wr1i"]
 script = ExtResource("1_h70xq")
-block_id = "block_1x2"
-position = Vector2(-80, 0)
+block_id = "block_1x1"
+position = Vector2(-16, 0)
+is_filled = true
+is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [sub_resource type="Resource" id="Resource_lng5a"]
 script = ExtResource("1_h70xq")
 block_id = "block_1x2"
+position = Vector2(40, 0)
+is_filled = true
+is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [sub_resource type="Resource" id="Resource_h70xq"]
 script = ExtResource("1_h70xq")
-block_id = "block_1x1"
-position = Vector2(40, 0)
+block_id = "block_1x3"
+position = Vector2(88, 0)
 is_filled = true
 is_locked = true
 metadata/_custom_type_script = "uid://c4lb5cudd274j"
@@ -31,8 +38,8 @@ metadata/_custom_type_script = "uid://c4lb5cudd274j"
 [resource]
 script = ExtResource("2_eko48")
 id = "level_08"
-display_name = "level eight WIP"
-target_zone_positions = Array[Vector2]([Vector2(240, 200), Vector2(300, 100), Vector2(120, 120)])
+display_name = "level eight"
+target_zone_positions = Array[Vector2]([Vector2(230, 120), Vector2(300, 120), Vector2(370, 120), Vector2(430, 140), Vector2(430, 200), Vector2(150, 260)])
 blocks = Array[ExtResource("1_h70xq")]([SubResource("Resource_0j7bc"), SubResource("Resource_0wr1i"), SubResource("Resource_lng5a"), SubResource("Resource_h70xq")])
-target_score = 3
+target_score = 6
 metadata/_custom_type_script = "uid://cjyn0y48epuwx"
