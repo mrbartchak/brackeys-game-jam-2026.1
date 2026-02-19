@@ -8,8 +8,11 @@ var is_covered: bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
 @onready var sprite_filled: AnimatedSprite2D = $AnimatedSprite/AnimatedSpriteFilled
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	animation_player.seek(randf() * animation_player.current_animation_length)
+	animation_player.speed_scale = randf_range(0.70, 0.8)
 	_blink_loop()
 
 func score() -> int:
