@@ -59,6 +59,7 @@ func _blink_loop() -> void:
 	_blink_loop()
 
 func _blink() -> void:
+	AudioManager.play_blink()
 	sprite.play("blink")
 	sprite_filled.play("blink")
 

@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://3owvb8lvo86n"]
+
+[ext_resource type="Texture2D" uid="uid://0ab4thiycre" path="res://ui/assets/eye.png" id="1_svqhi"]
+[ext_resource type="Script" uid="uid://b6oygqag2suat" path="res://ui/components/eye_icon.gd" id="2_583l0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjl0y"]
+atlas = ExtResource("1_svqhi")
+region = Rect2(0, 0, 19, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5x7l"]
+atlas = ExtResource("1_svqhi")
+region = Rect2(19, 0, 19, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukwr8"]
+atlas = ExtResource("1_svqhi")
+region = Rect2(57, 0, 19, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnv7o"]
+atlas = ExtResource("1_svqhi")
+region = Rect2(57, 0, 19, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d5x7l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjl0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5x7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukwr8")
+}],
+"loop": false,
+"name": &"close",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnv7o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukwr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5x7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjl0y")
+}],
+"loop": false,
+"name": &"open",
+"speed": 6.0
+}]
+
+[node name="EyeIcon" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_d5x7l")
+script = ExtResource("2_583l0")

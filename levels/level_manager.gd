@@ -6,6 +6,7 @@ extends Node2D
 var current_score: int = 0
 var target_zone_scene: PackedScene = preload("res://target_zones/target_zone.tscn")
 var block_scene: PackedScene = preload("res://blocks/block.tscn")
+var eye_icon_scene: PackedScene = preload("res://ui/components/eye_icon.tscn")
 var block_types: Dictionary = {
 	"block_1x1": preload("res://blocks/types/block_1x1.tres"),
 	"block_1x2": preload("res://blocks/types/block_1x2.tres"),
@@ -18,6 +19,7 @@ var block_types: Dictionary = {
 @onready var level_label: Label = %LevelLabel
 @onready var win_screen: Control = %WinScreen
 @onready var score_label: Label = %ScoreLabel
+@onready var eye_board: Control = %EyeBoard
 
 func _ready() -> void:
 	level_data = GameManager.current_level_data
@@ -25,6 +27,7 @@ func _ready() -> void:
 		_build_level()
 	GameManager.unlock_input()
 	_update_ui()
+	init_eye_icons()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):
@@ -77,7 +80,7 @@ func _begin_score_sequence(block: Block, scored_zones: Array[TargetZone]) -> voi
 	_play_block_scored_effect(block)
 	for scored_zone: TargetZone in scored_zones:
 		_play_target_zone_pop(scored_zone)
-	await get_tree().create_timer(0.5).timeout
+	#await get_tree().create_timer(0.5).timeout
 	#await for them to be done
 	#tally the points
 	#add to score
@@ -103,7 +106,7 @@ func _check_win() -> void:
 
 func _win() -> void:
 	GameManager.lock_input()
-	await get_tree().create_timer(.3).timeout
+	await get_tree().create_timer(.5).timeout
 	AudioManager.play_win()
 	win_screen.show()
 
@@ -113,7 +116,22 @@ func _win() -> void:
 func _update_ui() -> void:
 	level_label.text = level_data.display_name
 	score_label.text = str(current_score)
+	_update_eyes()
 
+func init_eye_icons() -> void:
+	var total_eyes: int = level_data.target_score
+	for i in range(total_eyes):
+		var eye_icon: Eyeicon = eye_icon_scene.instantiate()
+		var offset: float = (i - (total_eyes - 1) / 2.0) * 24
+		eye_icon.position.x = offset
+		eye_board.add_child(eye_icon)
+		print("eye added")
+
+func _update_eyes() -> void:
+	for i in range(current_score):
+		var eye_icon: Eyeicon = eye_board.get_child(i)
+		if not eye_icon.is_open():
+			eye_icon.open()
 # =======================
 # ======= Helpers =======
 # =======================

@@ -7,6 +7,8 @@ var music_main: AudioStream = preload("res://core/audio/sonican_dream_ambient_lo
 var sfx_pen_click: AudioStream = preload("res://core/audio/pen_click.wav")
 var sfx_deep_pop: AudioStream = preload("res://core/audio/deep_pop.wav")
 var sfx_win: AudioStream = preload("res://core/audio/win_sound.wav")
+var sfx_blink: AudioStream = preload("res://core/audio/blink_1.wav")
+var sfx_eye_close: AudioStream = preload("res://core/audio/eye_close.wav")
 
 func _ready() -> void:
 	music_player = AudioStreamPlayer.new()
@@ -37,11 +39,18 @@ func play_button_click() -> void:
 func play_block_rotate(pitch_range: float = 0.0, volume: float = -15.0) -> void:
 	play_sfx(sfx_pen_click, pitch_range, volume)
 
-func play_zone_scored(pitch_range: float = 0.0, volume: float = 0.0) -> void:
-	play_sfx(sfx_deep_pop, pitch_range, volume)
+func play_zone_scored() -> void:
+	#play_sfx(sfx_deep_pop, pitch_range, volume)
+	play_sfx(sfx_eye_close, 0.7, -10.0)
 
 func play_win(pitch_range: float = 0.0, volume: float = 0.0) -> void:
 	play_sfx(sfx_win, pitch_range, volume)
+
+func play_blink() -> void:
+	play_sfx(sfx_blink, 0.5, -10.0)
+
+func play_eye_close() -> void:
+	play_sfx(sfx_eye_close, 0.5, -10.0)
 
 
 
