@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0j4jkbwjdq3b"]
+[gd_scene load_steps=30 format=3 uid="uid://b0j4jkbwjdq3b"]
 
 [ext_resource type="Texture2D" uid="uid://cbibbahwgjo5b" path="res://target_zones/target_zone.png" id="1_ecbvc"]
 [ext_resource type="Script" uid="uid://brnsoiosvi7l7" path="res://target_zones/target_zone.gd" id="1_tt854"]
@@ -189,6 +189,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_7xbq5"]
+resource_name = "float"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gl80h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fh5mc"]
+_data = {
+&"RESET": SubResource("Animation_gl80h"),
+&"float": SubResource("Animation_7xbq5")
+}
+
 [node name="TargetZone" type="Area2D"]
 script = ExtResource("1_tt854")
 
@@ -206,10 +244,17 @@ texture = ExtResource("2_w028c")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hj2sg")
 
-[node name="AnimatedSpriteFilled" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSpriteFilled" type="AnimatedSprite2D" parent="AnimatedSprite"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_4rcmc")
 animation = &"blink"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fh5mc")
+}
+autoplay = "float"
+speed_scale = 0.5
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

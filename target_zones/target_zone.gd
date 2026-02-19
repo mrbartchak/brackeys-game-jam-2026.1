@@ -7,7 +7,7 @@ var overlapping_blocks: int = 0
 var is_covered: bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
-@onready var sprite_filled: AnimatedSprite2D = $AnimatedSpriteFilled
+@onready var sprite_filled: AnimatedSprite2D = $AnimatedSprite/AnimatedSpriteFilled
 
 func _ready() -> void:
 	_blink_loop()
@@ -41,10 +41,10 @@ func _check_covered() -> void:
 
 func _update_visuals() -> void:
 	if is_covered:
-		sprite.hide()
+		#sprite.hide()
 		sprite_filled.show()
 	else:
-		sprite.show()
+		#sprite.show()
 		sprite_filled.hide()
 
 func _blink_loop() -> void:
