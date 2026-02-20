@@ -10,7 +10,8 @@ var eye_icon_scene: PackedScene = preload("res://ui/components/eye_icon.tscn")
 var block_types: Dictionary = {
 	"block_1x1": preload("res://blocks/types/block_1x1.tres"),
 	"block_1x2": preload("res://blocks/types/block_1x2.tres"),
-	"block_1x3": preload("res://blocks/types/block_1x3.tres")
+	"block_1x3": preload("res://blocks/types/block_1x3.tres"),
+	"block_2x2": preload("res://blocks/types/block_2x2.tres")
 }
 
 @onready var target_zone_container: Node2D = $TargetZones
