@@ -24,8 +24,8 @@ metadata/_custom_type_script = "uid://c4lb5cudd274j"
 
 [resource]
 script = ExtResource("2_nxuum")
-id = "level_11"
-display_name = "level eleven"
+id = "level_13"
+display_name = "level thirteen"
 target_zone_positions = Array[Vector2]([Vector2(317.18, 174.34), Vector2(365.73, 171.93), Vector2(219.44, 208.75), Vector2(334.52, 237.4)])
 blocks = Array[ExtResource("1_55doe")]([SubResource("Resource_j5kva"), SubResource("Resource_w8jk7"), SubResource("Resource_885gk")])
 target_score = 10
