@@ -243,6 +243,7 @@ texture = ExtResource("2_w028c")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hj2sg")
+animation = &"close"
 
 [node name="AnimatedSpriteFilled" type="AnimatedSprite2D" parent="AnimatedSprite"]
 visible = false

@@ -40,70 +40,6 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LevelButton1" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_01"
-level_number = "1"
-
-[node name="LevelButton2" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_02"
-level_number = "2"
-
-[node name="LevelButton3" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_03"
-level_number = "3"
-
-[node name="LevelButton4" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_04"
-level_number = "4"
-
-[node name="LevelButton5" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_05"
-level_number = "5"
-
-[node name="LevelButton6" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_06"
-level_number = "6"
-
-[node name="LevelButton7" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_07"
-level_number = "7"
-
-[node name="LevelButton8" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_08"
-level_number = "8"
-
-[node name="LevelButton9" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_09"
-level_number = "9"
-
-[node name="LevelButton10" parent="HBoxContainer" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_10"
-level_number = "10"
-
 [node name="Footer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -117,3 +53,123 @@ grow_vertical = 0
 [node name="BackButton" parent="Footer" instance=ExtResource("2_o583w")]
 layout_mode = 2
 back_scene_name = "main_menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelRow1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelButton1" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_01"
+level_number = "1"
+
+[node name="LevelButton2" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_02"
+level_number = "2"
+
+[node name="LevelButton3" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_03"
+level_number = "3"
+
+[node name="LevelButton4" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_04"
+level_number = "4"
+
+[node name="LevelButton5" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_05"
+level_number = "5"
+
+[node name="LevelButton6" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_06"
+level_number = "6"
+
+[node name="LevelButton7" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_07"
+level_number = "7"
+
+[node name="LevelButton8" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_08"
+level_number = "8"
+
+[node name="LevelButton9" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_09"
+level_number = "9"
+
+[node name="LevelButton10" parent="VBoxContainer/LevelRow1" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_10"
+level_number = "10"
+
+[node name="LevelRow2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelButton11" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton12" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton13" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton14" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton15" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton16" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton17" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton18" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton19" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"
+
+[node name="LevelButton20" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
+layout_mode = 2
+level_id = "level_11"
+level_number = "11"

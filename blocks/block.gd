@@ -7,8 +7,7 @@ signal filled_changed()
 @export var block_type: BlockType
 
 static var dragged_block: Block = null
-var is_filled: bool
-var is_locked: bool
+var is_absorber: bool
 
 var _is_dragging: bool = false
 var _is_hovered: bool = false
@@ -66,34 +65,11 @@ func _rotate_block() -> void:
 	global_position = get_global_mouse_position()
 	_tween_rotate(target_angle)
 
-func _check_fill() -> void:
-	if is_locked:
-		return
-	for area in get_overlapping_areas():
-		if area.is_in_group("blocks") and area.is_filled:
-			_fill_block()
-			return
-	_unfill_block()
-#
-func _fill_block() -> void:
-	if is_locked or is_filled:
-		return
-	is_filled = true
-	_update_visuals()
-	filled_changed.emit()
-
-func _unfill_block() -> void:
-	if is_locked or not is_filled:
-		return
-	is_filled = false
-	_update_visuals()
-	filled_changed.emit()
-
 func _update_visuals() -> void:
-	if is_filled:
-		sprite.texture = block_type.texture_filled
-	else:
+	if is_absorber:
 		sprite.texture = block_type.texture_unfilled
+	else:
+		sprite.texture = block_type.texture_filled
 
 # ========================
 # ======  SIGNALS   ======
@@ -109,22 +85,6 @@ func _mouse_exit() -> void:
 	_is_hovered = false
 	if not _is_dragging:
 		_tween_scale(1.0)
-
-func _on_area_entered(area: Area2D) -> void:
-	if is_locked:
-		return
-	if area.is_in_group("blocks"):
-		area = area as Block
-		area.filled_changed.connect(_check_fill)
-		_check_fill()
-
-func _on_area_exited(area: Area2D) -> void:
-	if is_locked:
-		return
-	if area.is_in_group("blocks"):
-		area = area as Block
-		area.filled_changed.disconnect(_check_fill)
-		_check_fill()
 
 # ========================
 # ======  HELPERS   ======

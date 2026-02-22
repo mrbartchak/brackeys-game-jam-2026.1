@@ -5,8 +5,10 @@ extends Node2D
 
 var current_score: int = 0
 var target_zone_scene: PackedScene = preload("res://target_zones/target_zone.tscn")
+var target_zone_2_scene: PackedScene = preload("res://target_zones/target_zone_2.tscn")
 var block_scene: PackedScene = preload("res://blocks/block.tscn")
 var eye_icon_scene: PackedScene = preload("res://ui/components/eye_icon.tscn")
+var eye_icon_dripping_scene: PackedScene = preload("res://ui/components/eye_icon_dripping.tscn")
 var block_types: Dictionary = {
 	"block_1x1": preload("res://blocks/types/block_1x1.tres"),
 	"block_1x2": preload("res://blocks/types/block_1x2.tres"),
@@ -54,8 +56,7 @@ func _spawn_blocks() -> void:
 		var block: Block = block_scene.instantiate()
 		block.block_type = block_types.get(block_config.block_id)
 		block.position = block_config.position
-		block.is_filled = block_config.is_filled
-		block.is_locked = block_config.is_locked
+		block.is_absorber = block_config.is_absorber
 		block.placed.connect(_try_score)
 		block_container.add_child(block)
 
@@ -69,10 +70,34 @@ func _try_score(block: Block) -> void:
 		if target_zone.is_covered:
 			is_valid = true
 			scored_zones.append(target_zone)
-	if is_valid:
+	if is_valid and not block.is_absorber:
 		_begin_score_sequence(block, scored_zones)
 		return
+	elif is_valid and block.is_absorber:
+		_absorb_zones(block, scored_zones)
 	#not valid then... so return block somehow?
+
+func _absorb_zones(block: Block, scored_zones: Array[TargetZone]) -> void:
+	var absorbed_value: int = _tally_points(block, scored_zones)
+	var block_pos: Vector2 = block.global_position
+	_begin_score_sequence(block, scored_zones)
+	await get_tree().create_timer(0.35).timeout
+	_spawn_merged_zone(block_pos, absorbed_value)
+
+func _spawn_merged_zone(spawn_pos: Vector2, absorbed_value: int) -> void:
+	var zone: TargetZone
+	if absorbed_value == 1:
+		zone = target_zone_scene.instantiate()
+		zone.value = 1
+	elif absorbed_value == 2:
+		zone = target_zone_2_scene.instantiate()
+		zone.value = 2
+	else:
+		zone = target_zone_scene.instantiate()
+		zone.value = 1
+	zone.position = spawn_pos
+	zone.is_covered = false
+	target_zone_container.add_child(zone)
 
 func _begin_score_sequence(block: Block, scored_zones: Array[TargetZone]) -> void:
 	GameManager.lock_input()
@@ -130,9 +155,18 @@ func init_eye_icons() -> void:
 
 func _update_eyes() -> void:
 	for i in range(current_score):
+		if i>= level_data.target_score:
+			_spawn_bonus_eye(i)
 		var eye_icon: Eyeicon = eye_board.get_child(i)
 		if not eye_icon.is_open():
 			eye_icon.open()
+
+func _spawn_bonus_eye(index: int) -> void:
+	var i: int = index % level_data.target_score
+	var offset: float = (i - (level_data.target_score - 1) / 2.0) * 24
+	var eye_icon_dripping: Eyeicon = eye_icon_dripping_scene.instantiate()
+	eye_icon_dripping.position.x = offset
+	eye_board.add_child(eye_icon_dripping)
 # =======================
 # ======= Helpers =======
 # =======================

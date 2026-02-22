@@ -35,7 +35,7 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _check_covered() -> void:
 	for area in get_overlapping_areas():
-		if area.is_in_group("blocks") and area.is_filled:
+		if area.is_in_group("blocks"):
 			is_covered = true
 			_update_visuals()
 			return
