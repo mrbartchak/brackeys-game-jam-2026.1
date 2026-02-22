@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://csb4fm2hdbikq"]
+[gd_scene load_steps=7 format=3 uid="uid://csb4fm2hdbikq"]
 
 [ext_resource type="PackedScene" uid="uid://fh6ephdx8b5i" path="res://ui/components/back_button.tscn" id="1_axpbv"]
 [ext_resource type="Texture2D" uid="uid://bmrsfka7pn13d" path="res://ui/assets/background.png" id="1_ke2im"]
+[ext_resource type="Script" uid="uid://f1w1ed0k33q2" path="res://ui/components/win_screen.gd" id="1_x01ik"]
+[ext_resource type="Texture2D" uid="uid://ci1qrk16yaq3p" path="res://ui/assets/next_buttons.png" id="3_ppdv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x01ik"]
+atlas = ExtResource("3_ppdv6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppdv6"]
+atlas = ExtResource("3_ppdv6")
+region = Rect2(0, 32, 32, 32)
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -10,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x01ik")
 
 [node name="Overlay" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.5882353)
@@ -57,3 +68,13 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 back_scene_name = "level_select"
+
+[node name="NextButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_x01ik")
+texture_pressed = SubResource("AtlasTexture_ppdv6")
+texture_hover = SubResource("AtlasTexture_ppdv6")
+texture_focused = SubResource("AtlasTexture_x01ik")

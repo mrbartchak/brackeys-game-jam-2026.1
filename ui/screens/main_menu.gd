@@ -4,6 +4,7 @@ extends Control
 @onready var play_btn: TextureButton = %PlayButton
 @onready var controls_btn: TextureButton = %ControlsButton
 @onready var about_btn: TextureButton = %AboutButton
+@onready var credit_btn: TextureButton = %CreditButton
 @onready var quit_btn: TextureButton = %QuitButton
 
 func _ready() -> void:
@@ -13,5 +14,8 @@ func _ready() -> void:
 		TransitionManager.transition_to("controls"))
 	about_btn.pressed.connect(func():
 		TransitionManager.transition_to("about"))
+	credit_btn.pressed.connect(func():
+		TransitionManager.transition_to("credit")
+	)
 	quit_btn.pressed.connect(func():
 		get_tree().quit())

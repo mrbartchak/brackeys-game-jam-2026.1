@@ -18,6 +18,26 @@ offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("1_jr4f2")
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(310, 120)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -128.0
+offset_right = 155.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[wave]goal: place blocks on zones to score eyes
+"
+scroll_active = false
+vertical_alignment = 1
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(310, 120)
 layout_mode = 1

@@ -41,8 +41,18 @@ grow_horizontal = 2
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="LevelLabel" type="Label" parent="LevelUI/CenterContainer/VBoxContainer"]
+[node name="LevelLabel" type="RichTextLabel" parent="LevelUI/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 16)
+layout_mode = 2
+bbcode_enabled = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelLabel2" type="Label" parent="LevelUI/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "level one"
 label_settings = SubResource("LabelSettings_ce4gc")
@@ -55,6 +65,7 @@ size_flags_vertical = 4
 
 [node name="ScoreLabel" type="Label" parent="LevelUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

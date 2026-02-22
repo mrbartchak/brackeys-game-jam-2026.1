@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0paxfqicjyju"]
+[gd_scene load_steps=16 format=3 uid="uid://0paxfqicjyju"]
 
 [ext_resource type="Texture2D" uid="uid://vinpv2k76edh" path="res://ui/assets/logo.png" id="1_t7e0r"]
 [ext_resource type="Script" uid="uid://cgpsl8e1ategg" path="res://ui/screens/main_menu.gd" id="1_wk0pr"]
@@ -13,13 +13,33 @@ region = Rect2(0, 22, 68, 22)
 atlas = ExtResource("2_0dkrt")
 region = Rect2(0, 0, 68, 22)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhre2"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(204, 22, 68, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpa1d"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(204, 0, 68, 22)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmr83"]
 atlas = ExtResource("2_0dkrt")
 region = Rect2(68, 22, 68, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8uxxo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrge7"]
 atlas = ExtResource("2_0dkrt")
 region = Rect2(68, 0, 68, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsufx"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(68, 0, 68, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcsbv"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(272, 22, 68, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itwiy"]
+atlas = ExtResource("2_0dkrt")
+region = Rect2(272, 0, 68, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rstm"]
 atlas = ExtResource("2_0dkrt")
@@ -81,19 +101,28 @@ texture_focused = SubResource("AtlasTexture_wk0pr")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(66, 22)
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_rmr83")
-texture_pressed = SubResource("AtlasTexture_8uxxo")
-texture_hover = SubResource("AtlasTexture_8uxxo")
-texture_focused = SubResource("AtlasTexture_rmr83")
+texture_normal = SubResource("AtlasTexture_xhre2")
+texture_pressed = SubResource("AtlasTexture_dpa1d")
+texture_hover = SubResource("AtlasTexture_dpa1d")
+texture_focused = SubResource("AtlasTexture_xhre2")
 
 [node name="AboutButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(66, 22)
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_rmr83")
-texture_pressed = SubResource("AtlasTexture_8uxxo")
-texture_hover = SubResource("AtlasTexture_8uxxo")
+texture_pressed = SubResource("AtlasTexture_wrge7")
+texture_hover = SubResource("AtlasTexture_rsufx")
 texture_focused = SubResource("AtlasTexture_rmr83")
+
+[node name="CreditButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 22)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_qcsbv")
+texture_pressed = SubResource("AtlasTexture_itwiy")
+texture_hover = SubResource("AtlasTexture_itwiy")
+texture_focused = SubResource("AtlasTexture_qcsbv")
 
 [node name="QuitButton" type="TextureButton" parent="LeftGroup/MenuButtons"]
 unique_name_in_owner = true

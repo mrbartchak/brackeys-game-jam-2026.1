@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://34iqac6l4mrg"]
+[gd_scene load_steps=5 format=3 uid="uid://34iqac6l4mrg"]
 
 [ext_resource type="Texture2D" uid="uid://bmrsfka7pn13d" path="res://ui/assets/background.png" id="1_1n4qm"]
 [ext_resource type="PackedScene" uid="uid://fh6ephdx8b5i" path="res://ui/components/back_button.tscn" id="2_o583w"]
 [ext_resource type="PackedScene" uid="uid://2bae1rloefoj" path="res://ui/components/level_button.tscn" id="2_smnxl"]
+[ext_resource type="PackedScene" uid="uid://3owvb8lvo86n" path="res://ui/components/eye_icon.tscn" id="4_smnxl"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -123,6 +124,7 @@ level_number = "10"
 
 [node name="LevelRow2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="LevelButton11" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
 layout_mode = 2
@@ -131,45 +133,52 @@ level_number = "11"
 
 [node name="LevelButton12" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
 layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+level_id = "level_12"
+level_number = "12"
 
 [node name="LevelButton13" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
 layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+level_id = "level_13"
+level_number = "13"
 
-[node name="LevelButton14" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+[node name="EyeContainer" type="Node2D" parent="."]
 
-[node name="LevelButton15" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+[node name="EyeIcon" parent="EyeContainer" instance=ExtResource("4_smnxl")]
+position = Vector2(123, 93)
+animation = &"close"
+start_awake = true
 
-[node name="LevelButton16" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+[node name="EyeIcon2" parent="EyeContainer" instance=ExtResource("4_smnxl")]
+position = Vector2(555, 47)
+animation = &"close"
+start_awake = true
 
-[node name="LevelButton17" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+[node name="EyeIcon3" parent="EyeContainer" instance=ExtResource("4_smnxl")]
+position = Vector2(529, 293)
+animation = &"close"
+start_awake = true
 
-[node name="LevelButton18" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+[node name="EyeIcon4" parent="EyeContainer" instance=ExtResource("4_smnxl")]
+position = Vector2(369, 76)
+animation = &"close"
+start_awake = true
 
-[node name="LevelButton19" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+[node name="EyeIcon5" parent="EyeContainer" instance=ExtResource("4_smnxl")]
+position = Vector2(72, 298)
+animation = &"close"
+start_awake = true
 
-[node name="LevelButton20" parent="VBoxContainer/LevelRow2" instance=ExtResource("2_smnxl")]
-layout_mode = 2
-level_id = "level_11"
-level_number = "11"
+[node name="EyeIcon6" parent="EyeContainer" instance=ExtResource("4_smnxl")]
+position = Vector2(447, 199)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon7" parent="EyeContainer" instance=ExtResource("4_smnxl")]
+position = Vector2(236, 260)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon8" parent="EyeContainer" instance=ExtResource("4_smnxl")]
+position = Vector2(37, 32)
+animation = &"close"
+start_awake = true

@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=3 uid="uid://k4dv3v05r1oo"]
+
+[ext_resource type="PackedScene" uid="uid://fh6ephdx8b5i" path="res://ui/components/back_button.tscn" id="2_rhms2"]
+[ext_resource type="PackedScene" uid="uid://3owvb8lvo86n" path="res://ui/components/eye_icon.tscn" id="2_suijj"]
+
+[node name="Credit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15294118, 0.16078432, 0.27450982, 1)
+
+[node name="CenterContent" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="CenterContent"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TextEdit" type="RichTextLabel" parent="CenterContent/Content"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave]code: me
+art: me
+sound: pixabay
+font: jeti
+palette: snowy owl"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" parent="." instance=ExtResource("2_rhms2")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -80.0
+offset_right = 16.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+back_scene_name = "main_menu"
+
+[node name="EyeContainer" type="Node2D" parent="."]
+
+[node name="EyeIcon" parent="EyeContainer" instance=ExtResource("2_suijj")]
+position = Vector2(123, 93)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon2" parent="EyeContainer" instance=ExtResource("2_suijj")]
+position = Vector2(555, 47)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon3" parent="EyeContainer" instance=ExtResource("2_suijj")]
+position = Vector2(529, 293)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon4" parent="EyeContainer" instance=ExtResource("2_suijj")]
+position = Vector2(277, 42)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon5" parent="EyeContainer" instance=ExtResource("2_suijj")]
+position = Vector2(72, 298)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon6" parent="EyeContainer" instance=ExtResource("2_suijj")]
+position = Vector2(447, 199)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon7" parent="EyeContainer" instance=ExtResource("2_suijj")]
+position = Vector2(169, 214)
+animation = &"close"
+start_awake = true
+
+[node name="EyeIcon8" parent="EyeContainer" instance=ExtResource("2_suijj")]
+position = Vector2(37, 32)
+animation = &"close"
+start_awake = true

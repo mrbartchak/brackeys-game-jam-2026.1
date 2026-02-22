@@ -6,6 +6,7 @@ extends Node2D
 var current_score: int = 0
 var target_zone_scene: PackedScene = preload("res://target_zones/target_zone.tscn")
 var target_zone_2_scene: PackedScene = preload("res://target_zones/target_zone_2.tscn")
+var target_zone_3_scene: PackedScene = preload("res://target_zones/target_zone_3.tscn")
 var block_scene: PackedScene = preload("res://blocks/block.tscn")
 var eye_icon_scene: PackedScene = preload("res://ui/components/eye_icon.tscn")
 var eye_icon_dripping_scene: PackedScene = preload("res://ui/components/eye_icon_dripping.tscn")
@@ -19,7 +20,7 @@ var block_types: Dictionary = {
 @onready var target_zone_container: Node2D = $TargetZones
 @onready var block_container: Node2D = $Blocks
 # UI
-@onready var level_label: Label = %LevelLabel
+@onready var level_label: RichTextLabel = %LevelLabel
 @onready var win_screen: Control = %WinScreen
 @onready var score_label: Label = %ScoreLabel
 @onready var eye_board: Control = %EyeBoard
@@ -93,8 +94,8 @@ func _spawn_merged_zone(spawn_pos: Vector2, absorbed_value: int) -> void:
 		zone = target_zone_2_scene.instantiate()
 		zone.value = 2
 	else:
-		zone = target_zone_scene.instantiate()
-		zone.value = 1
+		zone = target_zone_3_scene.instantiate()
+		zone.value = 3
 	zone.position = spawn_pos
 	zone.is_covered = false
 	target_zone_container.add_child(zone)
@@ -134,13 +135,14 @@ func _win() -> void:
 	GameManager.lock_input()
 	await get_tree().create_timer(.5).timeout
 	AudioManager.play_win()
+	GameManager.level_won(level_data.id)
 	win_screen.show()
 
 # =======================
 # ========= UI ==========
 # =======================
 func _update_ui() -> void:
-	level_label.text = level_data.display_name
+	level_label.text = "[wave]" + level_data.display_name
 	score_label.text = str(current_score)
 	_update_eyes()
 
@@ -157,6 +159,9 @@ func _update_eyes() -> void:
 	for i in range(current_score):
 		if i>= level_data.target_score:
 			_spawn_bonus_eye(i)
+			var eye_icon: Eyeicon = eye_board.get_child(i % level_data.target_score)
+			eye_icon.hide()
+			continue
 		var eye_icon: Eyeicon = eye_board.get_child(i)
 		if not eye_icon.is_open():
 			eye_icon.open()
@@ -167,6 +172,7 @@ func _spawn_bonus_eye(index: int) -> void:
 	var eye_icon_dripping: Eyeicon = eye_icon_dripping_scene.instantiate()
 	eye_icon_dripping.position.x = offset
 	eye_board.add_child(eye_icon_dripping)
+	eye_icon_dripping.open()
 # =======================
 # ======= Helpers =======
 # =======================

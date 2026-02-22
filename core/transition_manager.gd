@@ -6,7 +6,8 @@ var scenes: Dictionary = {
 	"main_menu": preload("res://ui/screens/main_menu.tscn"),
 	"level_select": preload("res://ui/screens/level_select.tscn"),
 	"about": preload("res://ui/screens/about.tscn"),
-	"controls": preload("res://ui/screens/controls.tscn")
+	"controls": preload("res://ui/screens/controls.tscn"),
+	"credit": preload("res://ui/screens/credit.tscn")
 }
 
 func transition_to(scene_name: String, duration: float = 0.6, direction: TransitionDirection = TransitionDirection.LEFT) -> void:
@@ -33,7 +34,8 @@ func transition_to_packed(scene: PackedScene, duration: float = 0.6, direction: 
 		.set_ease(tween.EASE_IN_OUT).set_trans(tween.TRANS_CUBIC)
 	
 	tween.chain().tween_callback(func() -> void:
-		old_scene.queue_free()
+		if is_instance_valid(old_scene):
+			old_scene.queue_free()
 		scene_tree.current_scene = new_scene
 	)
 
